@@ -1,6 +1,3 @@
-
-# Auto Ads Service (Mid-level)
-
 ## Run
 
 1. Copy .env.example to .env
