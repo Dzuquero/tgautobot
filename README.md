@@ -1,8 +1,8 @@
 ## Run
 
-1. Copy .env.example to .env
-2. Fill TELEGRAM_TOKEN
-3. docker-compose up --build
+1. Копируем .env.example в .env(например)
+2. Вставляем токен в "TELEGRAM_TOKEN"
+3. В корневой папке открываем PowerShell и вбиваем команду "docker-compose up --build"
 
 Backend docs:
 http://localhost:8000/docs
