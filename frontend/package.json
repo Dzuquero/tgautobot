@@ -1,0 +1,18 @@
+{
+  "name": "cars",
+  "private": true,
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "axios": "^1"
+  },
+  "devDependencies": {
+    "vite": "^5",
+    "@vitejs/plugin-react": "^4"
+  }
+}
