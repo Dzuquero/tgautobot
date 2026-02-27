@@ -109,18 +109,3 @@ alembic upgrade head
 - TELEGRAM_TOKEN
 
 ---
-
-## 📦 Структура
-
-```
-backend/
-frontend/
-bot/
-docker-compose.yml
-.env.example
-```
-
-
-## 👨‍💻 Автор
-
-Тестовое задание выполнено полностью.
