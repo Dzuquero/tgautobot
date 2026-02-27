@@ -31,7 +31,7 @@ password: admin
 
 API
 
-Авторизация.
+Авторизация:
 
 ```
 POST /api/login
