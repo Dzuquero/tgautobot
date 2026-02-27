@@ -1,14 +1,120 @@
-## Run
+## 🚀 Быстрый запуск
 
-1. Копируем .env.example в .env(например)
-2. Вставляем токен в "TELEGRAM_TOKEN"
-3. В корневой папке открываем PowerShell и вбиваем команду "docker-compose up --build"
+```bash
+cp .env.example .env
+# заполняете OPENAI_API_KEY и TELEGRAM_TOKEN
+docker-compose up --build
+```
 
-Backend docs:
-http://localhost:8000/docs
+Откроется:
+- Frontend: http://localhost:5173
+- API: http://localhost:8000
 
-Frontend:
-http://localhost:3000
+Админ:
+```
+login: admin
+password: admin
+```
 
-Admin:
-admin / admin123
+---
+
+## 🧱 Архитектура
+
+- **backend** — FastAPI + SQLAlchemy + Alembic + Scraper worker  
+- **frontend** — React (Vite) SPA  
+- **bot** — Telegram (aiogram) + OpenAI Function Calling  
+- **db** — PostgreSQL  
+
+Сервисы запускаются через docker‑compose.
+
+---
+
+## 📡 API
+
+### POST /api/login
+Авторизация.
+
+```
+POST /api/login
+{
+  "username": "admin",
+  "password": "admin"
+}
+```
+
+Ответ:
+```
+{ "access_token": "JWT" }
+```
+
+### GET /api/cars
+Список автомобилей (JWT).
+
+---
+
+## 🤖 Telegram‑бот
+
+Пример запросов:
+- Найди красную BMW до 2 млн
+- Toyota 2018
+- черный Mercedes
+
+LLM извлекает фильтры → бот делает запрос к API → возвращает список.
+
+---
+
+## 🧾 Scraper
+
+Воркер периодически обращается к:
+```
+https://carsensor.net/api/search
+```
+
+Поля:
+- brand
+- model
+- year
+- price
+- color
+- url
+
+Логика:
+- upsert по url
+- обновление изменений
+- добавление новых
+
+Интервал: `SCRAPER_INTERVAL` (env)
+
+---
+
+## 🗄️ Миграции
+
+Alembic выполняется автоматически при старте backend:
+
+```
+alembic upgrade head
+```
+
+---
+
+## 🔐 Переменные окружения
+
+См. `.env.example`
+
+Обязательные:
+- DATABASE_URL
+- JWT_SECRET
+- OPENAI_API_KEY
+- TELEGRAM_TOKEN
+
+---
+
+## 📦 Структура
+
+```
+backend/
+frontend/
+bot/
+docker-compose.yml
+.env.example
+```
