@@ -1,0 +1,6 @@
+import os
+DATABASE_URL = os.getenv("DATABASE_URL")
+JWT_SECRET = os.getenv("JWT_SECRET")
+ADMIN_USER = os.getenv("ADMIN_USER")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
+SCRAPER_INTERVAL = int(os.getenv("SCRAPER_INTERVAL", 300))
